@@ -10,6 +10,9 @@ test ('Thêm và xóa todolist', async({page}) => {
     await page.locator("//button[@id='add-task']").click();
 }
     // Xóa các todo có số lẻ
+  page.on('dialog', async dialog => {
+    await dialog.accept()
+  });
   for (let i = 1; i <= 100; i += 2) {
     await page.locator(`//button[@id='todo-${i}-delete']`).click();
   }
